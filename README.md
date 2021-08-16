@@ -2,13 +2,13 @@
 
  SSD通过在每张特征图的位置，将输出的bbox离散成一系列默认的不同ratio和scale方框。在预测中，网络产生每个物体种类存在的可能性并且对方框作出调整来更好的适配物体的形状。另外，网络整合了拥有这不同的空间分辨率的特征图来更好地预测不同尺寸的物体，SSD 相对于需要的方法简单，通过object prosal，因为它完全消除了生成的建议以及随后的像素或特征重采样阶段并封装所有计算过程在单个网络中进行计算。
 
-![](C:\Users\王澳\Desktop\SSD\model.png)
+![](model.png)
 
-![de,](C:\Users\王澳\Desktop\demo.jpg)
+![de,](demo.jpg)
 
 ##### 空洞卷积
 
-![](C:\Users\王澳\Desktop\SSD\dilated.jpg)
+![](dilated.jpg)
 
 图像分割中一般按照传统的CNN中，利用CNN不断的Pooling 后降低对应的size最后经过转置卷积进行上采样，回到原始的图片的size的大小，b图是kernel_szie=(3$\times 3$​)dilation=2对应的实际上kernelWie7*7，除了几个对应的参数权重不为-其余权重全为0。
 
@@ -129,7 +129,7 @@ dilated的好处是不做pooling损失信息的情况下，加大了感受野，
 
 - 每个被添加的特征层(选择性从基本的网络中存在的额外的特征层)可以产生一系列固定的检测预测输出,一个特征层的shape$m\times n$​​​​​​，channels数对应的p,P个卷积核的kernel_size=(3,3) ，会产生检测框的类别或者位置的相关信息(类别的相关信息，是各个检测框的softmax的分类得分score，对应的位置信息则是prior box和ground truth box的offset 文章中用conf来表示)，SSD文章中的上述利用卷积层来代替FC层的存在
 
-- <img src="C:\Users\王澳\Desktop\SSD\inicate.png" style="zoom:33%;" />
+- <img src="inicate.png" style="zoom:33%;" />
 
 - 默认框和横纵比
 
@@ -141,7 +141,7 @@ dilated的好处是不做pooling损失信息的情况下，加大了感受野，
 
   每一层后跟着
 
-![](C:\Users\王澳\Desktop\SSD\feature_map.png)
+![](feature_map.png)
 
 #### Training
 
@@ -163,7 +163,7 @@ $$
 
 ![](C:\Users\王澳\Desktop\SSD\s_l.png)
 
-​                                           ![](C:\Users\王澳\Desktop\SSD\loc.jpg) 
+​                                           ![](loc.jpg) 
 
 ```python
 def encode(matched, priors, variances):
@@ -624,7 +624,7 @@ conv4_3 (batch,channel,height,width)-> (batch,height,width,channel) permute(0,2,
 
 第一个函数是 torch.max
 
-![](C:\Users\王澳\Desktop\SSD\torch_max.png)
+![](torch_max.png)
 
 axis=1,返回对应的列索引以及对应的Iou value
 
