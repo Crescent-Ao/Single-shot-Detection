@@ -4,7 +4,7 @@
 
 ![](model.png)
 
-![de,](demo.jpg)
+![](demo.jpg)
 
 ##### 空洞卷积
 
